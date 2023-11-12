@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block content%}
+<td><a class="btn btn-primary" href="{%url 'add-book'%}" role="button">add book</a></td>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">ISBN</th>
+        <th scope="col">Pub_date</th>
+        <th scope="col"> </th>
+        <th scope="col"></th> 
+      </tr>
+    </thead>
+    <tbody>
+        {%for book in books %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.isbn}}</td>
+        <td>{{book.pub_year}}</td>
+        <td><a class="btn btn-secondary" href="{%url 'update-book' book.id%}" role="button">Update</a></td>
+        <td><a class="btn btn-danger" href="{%url 'delete-book' book.id %}" role="button">Delete</a></td>
+      </tr>
+      {%endfor%}
+      
+    </tbody>
+  </table>
+{%endblock%}
